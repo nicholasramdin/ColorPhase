@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 621999727}
   - component: {fileID: 621999726}
   m_Layer: 0
-  m_Name: BlueWall
+  m_Name: PurpleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
