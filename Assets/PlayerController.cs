@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f; // Adjust the speed as needed
+    public float speed = 5f;
     private CharacterController characterController;
+
+    // New variable to track if the player has the green item
+    public bool HasGreenItem { get; set; }
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        HasGreenItem = false;
     }
 
     void Update()
@@ -21,23 +26,27 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
-        // Ensure the move direction is not zero (prevents unwanted rotation)
         if (moveDirection != Vector3.zero)
         {
-            // Rotate the player towards the move direction
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
 
         Vector3 moveVector = moveDirection * speed * Time.deltaTime;
 
-        // Apply gravity (optional - if you want gravity to affect the player)
         moveVector.y -= 9.8f * Time.deltaTime;
-
-        // Move the player using CharacterController
         characterController.Move(moveVector);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check for collision with the green wall and whether the player has the green item
+        if (other.CompareTag("GreenWall") && !HasGreenItem)
+        {
+            Debug.Log("You need the GreenItem to pass through this wall!");
+            // Optionally, play a sound or show a message to the player
+        }
     }
 }
 
