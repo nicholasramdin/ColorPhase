@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GreenItem : MonoBehaviour
 {
+    public GameObject GreenWall; // Reference to the GreenWall GameObject
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -16,7 +18,16 @@ public class GreenItem : MonoBehaviour
                 playerController.HasGreenItem = true;
                 // Optionally, you can play a sound, hide the GreenItem, etc.
                 gameObject.SetActive(false);
+
+                Debug.Log("Player picked up the GreenItem!");
+
+                // Destroy the GreenWall
+                if (GreenWall != null)
+                {
+                    Destroy(GreenWall);
+                }
             }
         }
     }
 }
+

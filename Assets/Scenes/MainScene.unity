@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 1116479312}
   m_Layer: 0
   m_Name: GreenWall
-  m_TagString: Untagged
+  m_TagString: GreenWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2286,7 +2286,7 @@ GameObject:
   - component: {fileID: 1743631484}
   m_Layer: 0
   m_Name: GreenItem
-  m_TagString: Untagged
+  m_TagString: GreenItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2389,6 +2389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5e1e650987e864e97be2758a26f9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GreenWall: {fileID: 1116479311}
 --- !u!1 &2120119330
 GameObject:
   m_ObjectHideFlags: 0
