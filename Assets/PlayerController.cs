@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     private CharacterController characterController;
+    public Animator MouseAnimation;
 
     // New variable to track if the player has the green item
     public bool HasGreenItem { get; set; }
@@ -30,9 +32,15 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(moveDirection);
-        }
+            MouseAnimation.SetFloat( "Speed",  speed);
 
+            //transform.rotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.08f);
+        }
+        else
+        {
+            MouseAnimation.SetFloat("Speed", 0f);
+        }
         Vector3 moveVector = moveDirection * speed * Time.deltaTime;
 
         moveVector.y -= 9.8f * Time.deltaTime;
