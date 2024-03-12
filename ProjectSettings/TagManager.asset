@@ -6,6 +6,10 @@ TagManager:
   tags:
   - GreenWall
   - GreenItem
+  - PurpleItem
+  - PurpleWall
+  - RedItem
+  - RedWall
   layers:
   - Default
   - TransparentFX
