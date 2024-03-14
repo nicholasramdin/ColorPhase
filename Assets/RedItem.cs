@@ -5,27 +5,31 @@ using UnityEngine;
 public class RedItem : MonoBehaviour
 {
     public GameObject greenWallPrefab; // Reference to the GreenWall prefab
-    public Transform respawnPosition;  // Respawn position for the GreenWall
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // Player picked up the red item
             PlayerController playerController = other.GetComponent<PlayerController>();
 
             if (playerController != null)
             {
                 playerController.HasRedItem = true;
-                gameObject.SetActive(false); // Hide the RedItem
+                // Optionally, play a sound, hide the RedItem, etc.
+                gameObject.SetActive(false);
 
                 // Respawn the GreenWall
-                if (greenWallPrefab != null && respawnPosition != null)
+                if (playerController.greenWallPrefab != null && playerController.greenWallRespawnPosition != null)
                 {
-                    playerController.RespawnGreenWall(greenWallPrefab, respawnPosition.position);
+                    // Specify rotation and scale parameters as required
+                    Vector3 respawnRotation = new Vector3(0f, 140.507f, 0f);
+                    Vector3 respawnScale = new Vector3(5f, 5f, 1f);
+                    playerController.RespawnGreenWall(playerController.greenWallPrefab, playerController.greenWallRespawnPosition.position, respawnRotation, respawnScale);
                 }
                 else
                 {
-                    Debug.LogError("GreenWallPrefab or respawnPosition is not set in the RedItem script.");
+                    Debug.LogError("GreenWallPrefab or greenWallRespawnPosition is not set in the PlayerController.");
                 }
             }
         }

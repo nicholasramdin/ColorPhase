@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GreenItem : MonoBehaviour
 {
-    public GameObject GreenWall; // Reference to the GreenWall GameObject
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -21,13 +19,15 @@ public class GreenItem : MonoBehaviour
 
                 Debug.Log("Player picked up the GreenItem!");
 
-                // Destroy the GreenWall
-                if (GreenWall != null)
+                // Find and destroy the clone of the GreenWall
+                GameObject greenWallClone = GameObject.FindGameObjectWithTag("GreenWall");
+                if (greenWallClone != null)
                 {
-                    Destroy(GreenWall);
+                    Destroy(greenWallClone);
                 }
             }
         }
     }
 }
+
 

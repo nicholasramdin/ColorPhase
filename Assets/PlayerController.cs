@@ -51,9 +51,20 @@ public class PlayerController : MonoBehaviour
         characterController.Move(moveVector);
     }
 
-    public void RespawnGreenWall(GameObject greenWallPrefab, Vector3 position)
+    public void RespawnGreenWall(GameObject greenWallPrefab, Vector3 position, Vector3 rotation, Vector3 scale)
     {
-        Instantiate(greenWallPrefab, position, Quaternion.identity);
+        if (greenWallPrefab != null)
+        {
+            // Instantiate the GreenWallClone at the specified position
+            GameObject greenWallClone = Instantiate(greenWallPrefab, position, Quaternion.Euler(rotation));
+
+            // Set scale
+            greenWallClone.transform.localScale = scale;
+        }
+        else
+        {
+            Debug.LogError("GreenWallPrefab is not assigned in the PlayerController.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,7 +94,11 @@ public class PlayerController : MonoBehaviour
             // Respawn the GreenWall
             if (greenWallPrefab != null && greenWallRespawnPosition != null)
             {
-                RespawnGreenWall(greenWallPrefab, greenWallRespawnPosition.position);
+                // Adjust these parameters as needed
+                Vector3 respawnPosition = greenWallRespawnPosition.position;
+                Vector3 respawnRotation = new Vector3(0f, 140.507f, 0f); // Adjust rotation as needed
+                Vector3 respawnScale = new Vector3(5f, 5f, 1f); // Adjust scale as needed
+                RespawnGreenWall(greenWallPrefab, respawnPosition, respawnRotation, respawnScale);
             }
             else
             {
