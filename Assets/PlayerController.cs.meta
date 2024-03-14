@@ -3,7 +3,9 @@ guid: 355a39fc8a2bf8c40b3707f65fd85e67
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - MouseAnimation: {instanceID: 0}
+  - GreenWallPrefab: {fileID: 6093172798568450340, guid: f94c703e0fbdace4a9435b2d561122b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

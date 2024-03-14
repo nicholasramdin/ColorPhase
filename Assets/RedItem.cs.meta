@@ -3,7 +3,8 @@ guid: 5039b763bd5d82b43b801c889076c13b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - greenWallPrefab: {fileID: 6093172798568450340, guid: f94c703e0fbdace4a9435b2d561122b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

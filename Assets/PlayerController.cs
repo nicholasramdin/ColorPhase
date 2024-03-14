@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public bool HasGreenItem { get; set; }
     public bool HasPurpleItem { get; set; }
     public bool HasRedItem { get; set; }
+
+    // Respawn position for the GreenWall
+    public Transform greenWallRespawnPosition;
+    public GameObject greenWallPrefab;
 
     void Start()
     {
@@ -39,11 +45,15 @@ public class PlayerController : MonoBehaviour
         {
             MouseAnimation.SetFloat("Speed", 0f);
         }
-
         Vector3 moveVector = moveDirection * speed * Time.deltaTime;
 
         moveVector.y -= 9.8f * Time.deltaTime;
         characterController.Move(moveVector);
+    }
+
+    public void RespawnGreenWall(GameObject greenWallPrefab, Vector3 position)
+    {
+        Instantiate(greenWallPrefab, position, Quaternion.identity);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,6 +79,16 @@ public class PlayerController : MonoBehaviour
             // Optionally, play a sound, hide the RedItem, etc.
             other.gameObject.SetActive(false);
             Destroy(GameObject.FindGameObjectWithTag("RedWall"));
+
+            // Respawn the GreenWall
+            if (greenWallPrefab != null && greenWallRespawnPosition != null)
+            {
+                RespawnGreenWall(greenWallPrefab, greenWallRespawnPosition.position);
+            }
+            else
+            {
+                Debug.LogError("GreenWallPrefab or greenWallRespawnPosition is not set in the PlayerController.");
+            }
         }
     }
 }
