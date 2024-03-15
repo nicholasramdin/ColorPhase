@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Win screen is being shown."); // Add this line
         winScreen.SetActive(true); // Show the win screen
-        Time.timeScale = 0f; // Stop time to freeze the game
+       // Time.timeScale = 0f; // Stop time to freeze the game
     }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class YellowItem : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -15,7 +16,8 @@ public class YellowItem : MonoBehaviour
             {
                 playerController.HasYellowItem = true; // Assuming you have a property to track if the player has obtained the YellowItem
                 // Optionally, play a sound, hide the YellowItem, etc.
-                gameObject.SetActive(false);
+                GetComponent<AudioSource>().Play();
+              //  gameObject.SetActive(false);
 
                 // Find and destroy the YellowWall
                 GameObject yellowWall = GameObject.FindGameObjectWithTag("YellowWall");

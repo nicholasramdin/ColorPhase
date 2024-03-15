@@ -4,6 +4,10 @@ public class PinkItem : MonoBehaviour
 {
     public AudioSource pickupSound; // Reference to the AudioSource for pickup sound
 
+    private void Start()
+    {
+        Instantiate(pickupSound);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
