@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,10 +15,13 @@ public class PlayerController : MonoBehaviour
     public bool HasTealItem { get; set; } // Added property for tracking TealItem
     public bool HasYellowItem { get; set; } // Added property for tracking YellowItem
     public bool HasBlackItem { get; set; } // Added property for tracking BlackItem
+    public bool HasCheeseItem { get; set; } // Added property for tracking CheeseItem
 
     // Respawn position for the GreenWall
     public Transform greenWallRespawnPosition;
     public GameObject greenWallPrefab;
+
+    public GameObject winScreen; // Reference to the win screen GameObject
 
     void Start()
     {
@@ -29,6 +33,8 @@ public class PlayerController : MonoBehaviour
         HasTealItem = false; // Initialize TealItem state
         HasYellowItem = false; // Initialize YellowItem state
         HasBlackItem = false; // Initialize BlackItem state
+        HasCheeseItem = false; // Initialize CheeseItem state
+        winScreen.SetActive(false); // Hide the win screen at the start
     }
 
     void Update()
@@ -144,5 +150,26 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             Destroy(GameObject.FindGameObjectWithTag("BlackWall")); // Destroy BlackWall
         }
+        else if (other.CompareTag("CheeseItem")) // Check for CheeseItem collision
+        {
+            HasCheeseItem = true; // Set CheeseItem flag to true
+            // Optionally, play a sound, hide the CheeseItem, etc.
+            other.gameObject.SetActive(false);
+            ShowWinScreen(); // Show the win screen
+        }
     }
+    void ShowWinScreen()
+    {
+        Debug.Log("Win screen is being shown."); // Add this line
+        winScreen.SetActive(true); // Show the win screen
+        Time.timeScale = 0f; // Stop time to freeze the game
+    }
+
+    
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
+        Time.timeScale = 1f; // Resume time
+    }
+    
 }

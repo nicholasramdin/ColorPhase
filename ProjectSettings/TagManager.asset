@@ -19,6 +19,8 @@ TagManager:
   - YellowItem
   - BlackWall
   - BlackItem
+  - Cheese
+  - CheeseItem
   layers:
   - Default
   - TransparentFX
