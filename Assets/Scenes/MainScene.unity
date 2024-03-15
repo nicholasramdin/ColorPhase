@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 134970975}
   - component: {fileID: 134970974}
   - component: {fileID: 134970973}
+  - component: {fileID: 134970976}
   m_Layer: 0
   m_Name: BlackItem
   m_TagString: BlackItem
@@ -438,6 +439,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134970971}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &134970976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134970971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bcb8983e0df474f9faa3a0058129b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &194275220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,7 +2618,7 @@ Transform:
   m_GameObject: {fileID: 741737850}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.481121, y: -9.535826, z: -16.2}
+  m_LocalPosition: {x: 9.481121, y: -9.535826, z: -51.6}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3643,6 +3656,7 @@ GameObject:
   - component: {fileID: 833985069}
   - component: {fileID: 833985068}
   - component: {fileID: 833985067}
+  - component: {fileID: 833985070}
   m_Layer: 0
   m_Name: TealItem
   m_TagString: TealItem
@@ -3736,6 +3750,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833985065}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &833985070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833985065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3a7b47d1b82c8449bf35ae5dbb607d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &834792561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4693,6 +4719,7 @@ GameObject:
   - component: {fileID: 1066184614}
   - component: {fileID: 1066184613}
   - component: {fileID: 1066184612}
+  - component: {fileID: 1066184615}
   m_Layer: 0
   m_Name: YellowItem
   m_TagString: YellowItem
@@ -4786,6 +4813,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066184610}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1066184615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066184610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e117637ca0b75c44ba2cc591ac627d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1088611250
 GameObject:
   m_ObjectHideFlags: 0
@@ -10670,6 +10709,10 @@ PrefabInstance:
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 460069553}
+    - target: {fileID: 2613830264603068463, guid: 87770b84f6dc855408cc922547b05fa2, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2613830264603068463, guid: 87770b84f6dc855408cc922547b05fa2, type: 3}
       propertyPath: GreenWallPrefab
       value: 

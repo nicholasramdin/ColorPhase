@@ -165,11 +165,10 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f; // Stop time to freeze the game
     }
 
-    
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
         Time.timeScale = 1f; // Resume time
     }
-    
 }
