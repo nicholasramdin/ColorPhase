@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool HasRedItem { get; set; }
     public bool HasPinkItem { get; set; } // Added property for tracking PinkItem
     public bool HasTealItem { get; set; } // Added property for tracking TealItem
+    public bool HasYellowItem { get; set; } // Added property for tracking YellowItem
 
     // Respawn position for the GreenWall
     public Transform greenWallRespawnPosition;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         HasRedItem = false;
         HasPinkItem = false; // Initialize PinkItem state
         HasTealItem = false; // Initialize TealItem state
+        HasYellowItem = false; // Initialize YellowItem state
     }
 
     void Update()
@@ -125,6 +127,13 @@ public class PlayerController : MonoBehaviour
             // Optionally, play a sound, hide the TealItem, etc.
             other.gameObject.SetActive(false);
             Destroy(GameObject.FindGameObjectWithTag("TealWall")); // Destroy TealWall
+        }
+        else if (other.CompareTag("YellowItem")) // Check for YellowItem collision
+        {
+            HasYellowItem = true; // Set YellowItem flag to true
+            // Optionally, play a sound, hide the YellowItem, etc.
+            other.gameObject.SetActive(false);
+            Destroy(GameObject.FindGameObjectWithTag("YellowWall")); // Destroy YellowWall
         }
     }
 }
