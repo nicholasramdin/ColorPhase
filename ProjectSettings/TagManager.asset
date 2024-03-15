@@ -17,6 +17,8 @@ TagManager:
   - TealItem
   - YellowWall
   - YellowItem
+  - BlackWall
+  - BlackItem
   layers:
   - Default
   - TransparentFX
