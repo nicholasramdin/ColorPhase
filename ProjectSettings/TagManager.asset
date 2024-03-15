@@ -11,6 +11,8 @@ TagManager:
   - RedItem
   - RedWall
   - GreenWallClone
+  - PinkItem
+  - PinkWall
   layers:
   - Default
   - TransparentFX

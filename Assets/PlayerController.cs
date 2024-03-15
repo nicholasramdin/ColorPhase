@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool HasGreenItem { get; set; }
     public bool HasPurpleItem { get; set; }
     public bool HasRedItem { get; set; }
+    public bool HasPinkItem { get; set; } // Added property for tracking PinkItem
 
     // Respawn position for the GreenWall
     public Transform greenWallRespawnPosition;
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour
         HasGreenItem = false;
         HasPurpleItem = false;
         HasRedItem = false;
+        HasPinkItem = false; // Initialize PinkItem state
     }
 
     void Update()
@@ -109,6 +109,13 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.LogError("GreenWallPrefab or greenWallRespawnPosition is not set in the PlayerController.");
             }
+        }
+        else if (other.CompareTag("PinkItem")) // Check for PinkItem collision
+        {
+            HasPinkItem = true; // Set PinkItem flag to true
+            // Optionally, play a sound, hide the PinkItem, etc.
+            other.gameObject.SetActive(false);
+            Destroy(GameObject.FindGameObjectWithTag("PinkWall")); // Destroy PinkWall
         }
     }
 }
