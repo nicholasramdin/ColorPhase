@@ -10,6 +10,7 @@ TagManager:
   - PurpleWall
   - RedItem
   - RedWall
+  - GreenWallClone
   layers:
   - Default
   - TransparentFX

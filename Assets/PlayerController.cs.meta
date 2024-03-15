@@ -5,7 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - MouseAnimation: {instanceID: 0}
-  - GreenWallPrefab: {fileID: 6093172798568450340, guid: f94c703e0fbdace4a9435b2d561122b5, type: 3}
+  - greenWallRespawnPosition: {fileID: 2593963840170364276, guid: 7363ab92ada5d604c9b600ff416710fb, type: 3}
+  - greenWallPrefab: {fileID: 6093172798568450340, guid: f94c703e0fbdace4a9435b2d561122b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

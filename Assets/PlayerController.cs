@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
 
             // Set scale
             greenWallClone.transform.localScale = scale;
+
+            // Set tag
+            greenWallClone.tag = "GreenWallClone"; // Set the tag appropriately
         }
         else
         {
@@ -69,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger entered: " + other.tag);
+
         // Check for collisions with different items and update properties accordingly
         if (other.CompareTag("GreenItem"))
         {

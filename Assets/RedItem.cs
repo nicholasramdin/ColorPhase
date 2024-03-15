@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class RedItem : MonoBehaviour
 {
-    public GameObject greenWallPrefab; // Reference to the GreenWall prefab
+    //private bool hasBeenActivated = false; // Flag to track whether the RedItem logic has already been executed
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("RedItem OnTriggerEnter called."); // Log when OnTriggerEnter is called
+
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player collided with RedItem."); // Log when player collides with RedItem
+
             // Player picked up the red item
             PlayerController playerController = other.GetComponent<PlayerController>();
 
@@ -18,7 +22,7 @@ public class RedItem : MonoBehaviour
                 playerController.HasRedItem = true;
                 // Optionally, play a sound, hide the RedItem, etc.
                 gameObject.SetActive(false);
-
+/*
                 // Respawn the GreenWall
                 if (playerController.greenWallPrefab != null && playerController.greenWallRespawnPosition != null)
                 {
@@ -31,6 +35,7 @@ public class RedItem : MonoBehaviour
                 {
                     Debug.LogError("GreenWallPrefab or greenWallRespawnPosition is not set in the PlayerController.");
                 }
+*/
             }
         }
     }
