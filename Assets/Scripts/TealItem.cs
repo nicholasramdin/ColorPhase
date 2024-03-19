@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TealItem : MonoBehaviour
 {
+    public AudioClip pickupSound; // Reference to the pickup sound AudioClip
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -13,18 +15,12 @@ public class TealItem : MonoBehaviour
 
             if (playerController != null)
             {
-                playerController.HasTealItem = true; // Assuming you have a property to track if the player has obtained the TealItem
-                // Optionally, play a sound, hide the TealItem, etc.
-                gameObject.SetActive(false);
-
-                // Find and destroy the TealWall
-                GameObject tealWall = GameObject.FindGameObjectWithTag("TealWall");
-                if (tealWall != null)
-                {
-                    Destroy(tealWall);
-                }
+                playerController.HasTealItem = true; // Set the flag to indicate that the player has obtained the TealItem
+                AudioManager.Instance.PlaySound(pickupSound); // Play the pickup sound effect using AudioManager
+                gameObject.SetActive(false); // Optionally, hide the TealItem
             }
         }
     }
 }
+
 

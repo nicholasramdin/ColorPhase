@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class YellowItem : MonoBehaviour
 {
+    public AudioClip pickupSound; // Reference to the pickup sound AudioClip
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,10 +13,9 @@ public class YellowItem : MonoBehaviour
 
             if (playerController != null)
             {
-                playerController.HasYellowItem = true; // Assuming you have a property to track if the player has obtained the YellowItem
-                // Optionally, play a sound, hide the YellowItem, etc.
-                GetComponent<AudioSource>().Play();
-              //  gameObject.SetActive(false);
+                playerController.HasYellowItem = true;
+                AudioManager.Instance.PlaySound(pickupSound); // Play the pickup sound effect using AudioManager
+                gameObject.SetActive(false);
 
                 // Find and destroy the YellowWall
                 GameObject yellowWall = GameObject.FindGameObjectWithTag("YellowWall");
@@ -29,4 +27,3 @@ public class YellowItem : MonoBehaviour
         }
     }
 }
-
