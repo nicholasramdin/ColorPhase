@@ -1,31 +1,21 @@
-using System.Collections;
-
 using UnityEngine;
 
 public class PurpleItem : MonoBehaviour
 {
-    public AudioSource pickupSound; // Reference to the AudioSource for pickup sound
-
-    private void Start()
-    {
-        Instantiate(pickupSound);
-    }
+    public AudioClip pickupSound; // Reference to the pickup sound AudioClip
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // Player picked up the purple item
             PlayerController playerController = other.GetComponent<PlayerController>();
 
             if (playerController != null)
             {
                 playerController.HasPurpleItem = true; // Assuming you have a property to track if the player has obtained the PurpleItem
-
-                PlayPickupSound(); // Play the pickup sound effect
-
-                // Optionally, hide the PurpleItem
-                //gameObject.SetActive(false);
-                StartCoroutine(DisableItemPickup());
+                AudioManager.Instance.PlaySound(pickupSound); // Play the pickup sound effect using AudioManager
+                gameObject.SetActive(false);
 
                 // Find and destroy the PurpleWall
                 GameObject purpleWall = GameObject.FindGameObjectWithTag("PurpleWall");
@@ -36,17 +26,4 @@ public class PurpleItem : MonoBehaviour
             }
         }
     }
-    IEnumerator DisableItemPickup()
-    {
-        print(Time.time);
-        yield return new WaitForSeconds(0.2f);
-        print(Time.time);
-        gameObject.SetActive(false);
-    }
-
-    void PlayPickupSound()
-    {
-        pickupSound.Play(); // Play the pickup sound effect
-    }
-     
 }

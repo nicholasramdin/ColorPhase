@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GreenItem : MonoBehaviour
 {
+    public AudioClip pickupSound; // Reference to the pickup sound AudioClip
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -12,21 +14,14 @@ public class GreenItem : MonoBehaviour
             if (playerController != null)
             {
                 playerController.HasGreenItem = true;
-                // Optionally, you can play a sound, hide the GreenItem, etc.
+                AudioManager.Instance.PlaySound(pickupSound); // Play the pickup sound effect using AudioManager
                 gameObject.SetActive(false);
-
-                Debug.Log("Player picked up the GreenItem!");
 
                 // Find and destroy the clone of the GreenWall
                 GameObject greenWallClone = GameObject.FindGameObjectWithTag("GreenWallClone");
                 if (greenWallClone != null)
                 {
-                    Debug.Log("GreenWallClone found. Destroying...");
                     Destroy(greenWallClone);
-                }
-                else
-                {
-                    Debug.Log("No GreenWallClone found.");
                 }
             }
         }

@@ -2,25 +2,19 @@ using UnityEngine;
 
 public class PinkItem : MonoBehaviour
 {
-    public AudioSource pickupSound; // Reference to the AudioSource for pickup sound
+    public AudioClip pickupSound; // Reference to the pickup sound AudioClip
 
-    private void Start()
-    {
-        Instantiate(pickupSound);
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // Player picked up the pink item
             PlayerController playerController = other.GetComponent<PlayerController>();
 
             if (playerController != null)
             {
                 playerController.HasPinkItem = true; // Assuming you have a property to track if the player has obtained the PinkItem
-
-                PlayPickupSound(); // Play the pickup sound effect
-
-                // Optionally, hide the PinkItem
+                AudioManager.Instance.PlaySound(pickupSound); // Play the pickup sound effect using AudioManager
                 gameObject.SetActive(false);
 
                 // Find and destroy the PinkWall
@@ -31,10 +25,5 @@ public class PinkItem : MonoBehaviour
                 }
             }
         }
-    }
-
-    void PlayPickupSound()
-    {
-        pickupSound.Play(); // Play the pickup sound effect
     }
 }

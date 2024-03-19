@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     public Animator MouseAnimation;
 
+    // Singleton instance
+    public static PlayerController instance;
+
     // Properties to track whether the player has the items
     public bool HasGreenItem { get; set; }
     public bool HasPurpleItem { get; set; }
@@ -22,6 +25,19 @@ public class PlayerController : MonoBehaviour
     public GameObject greenWallPrefab;
 
     public GameObject winScreen; // Reference to the win screen GameObject
+
+    // Singleton initialization
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -162,7 +178,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Win screen is being shown."); // Add this line
         winScreen.SetActive(true); // Show the win screen
-       // Time.timeScale = 0f; // Stop time to freeze the game
+                                   // Time.timeScale = 0f; // Stop time to freeze the game
     }
 
 
