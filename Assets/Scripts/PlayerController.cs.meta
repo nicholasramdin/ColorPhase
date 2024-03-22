@@ -8,6 +8,7 @@ MonoImporter:
   - greenWallRespawnPosition: {fileID: 2593963840170364276, guid: 7363ab92ada5d604c9b600ff416710fb, type: 3}
   - greenWallPrefab: {fileID: 6093172798568450340, guid: f94c703e0fbdace4a9435b2d561122b5, type: 3}
   - blackWallPrefab: {fileID: 2119082360546679791, guid: 99addc4e37c74534f8204e25dae93ecc, type: 3}
+  - yellowWallPrefab: {fileID: 6300904346812883690, guid: 7a2db6c0561439c4aaf8ee49c88e5461, type: 3}
   - winScreen: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

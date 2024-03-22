@@ -20,11 +20,12 @@ public class PlayerController : MonoBehaviour
     public bool HasBlackItem { get; set; } // Added property for tracking BlackItem
     public bool HasCheeseItem { get; set; } // Added property for tracking CheeseItem
 
-    // Respawn position for the GreenWall
-    public Transform greenWallRespawnPosition;
-    public GameObject greenWallPrefab;
-    public GameObject blackWallPrefab; 
 
+    public Transform greenWallRespawnPosition; // Respawn position for the GreenWall
+
+    public GameObject greenWallPrefab;
+    public GameObject blackWallPrefab;
+    public GameObject yellowWallPrefab;
 
     public GameObject winScreen; // Reference to the win screen GameObject
 
@@ -169,6 +170,8 @@ public class PlayerController : MonoBehaviour
             // Optionally, play a sound, hide the BlackItem, etc.
             other.gameObject.SetActive(false);
             Destroy(GameObject.FindGameObjectWithTag("BlackWall")); // Destroy BlackWall
+
+            SpawnYellowWall();
         }
         else if (other.CompareTag("CheeseItem")) // Check for CheeseItem collision
         {
@@ -190,6 +193,22 @@ public class PlayerController : MonoBehaviour
         GameObject blackWall = Instantiate(blackWallPrefab, spawnPosition, spawnRotation);
         blackWall.transform.localScale = spawnScale;
     }
+
+
+    private void SpawnYellowWall()
+    {
+        // Define the desired position, rotation, and scale
+        Vector3 spawnPosition = new Vector3(-17.76f, 2.41f, 5.37f);
+        Quaternion spawnRotation = Quaternion.Euler(0f, 410.899f, 0f);
+        Vector3 spawnScale = new Vector3(5f, 5f, 1f);
+
+        // Instantiate the yellowWallPrefab with the defined parameters
+        GameObject yellowWall = Instantiate(yellowWallPrefab, spawnPosition, spawnRotation);
+        yellowWall.transform.localScale = spawnScale;
+    }
+
+
+
 
 
     void ShowWinScreen()
