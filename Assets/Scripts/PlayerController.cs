@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     // Respawn position for the GreenWall
     public Transform greenWallRespawnPosition;
     public GameObject greenWallPrefab;
+    public GameObject blackWallPrefab; 
+
 
     public GameObject winScreen; // Reference to the win screen GameObject
 
@@ -151,6 +153,8 @@ public class PlayerController : MonoBehaviour
             // Optionally, play a sound, hide the TealItem, etc.
             other.gameObject.SetActive(false);
             Destroy(GameObject.FindGameObjectWithTag("TealWall")); // Destroy TealWall
+
+            SpawnBlackWall();
         }
         else if (other.CompareTag("YellowItem")) // Check for YellowItem collision
         {
@@ -174,9 +178,23 @@ public class PlayerController : MonoBehaviour
             ShowWinScreen(); // Show the win screen
         }
     }
+
+    private void SpawnBlackWall()
+    {
+        // Define the desired position, rotation, and scale
+        Vector3 spawnPosition = new Vector3(-1.39f, 3.33f, 7.78f);
+        Quaternion spawnRotation = Quaternion.Euler(0f, 321.818f, 0f);
+        Vector3 spawnScale = new Vector3(5f, 5f, 1f);
+
+        // Instantiate the blackWallPrefab with the defined parameters
+        GameObject blackWall = Instantiate(blackWallPrefab, spawnPosition, spawnRotation);
+        blackWall.transform.localScale = spawnScale;
+    }
+
+
     void ShowWinScreen()
     {
-        Debug.Log("Win screen is being shown."); // Add this line
+        Debug.Log("Win screen is being shown."); 
         winScreen.SetActive(true); // Show the win screen
                                    // Time.timeScale = 0f; // Stop time to freeze the game
     }
