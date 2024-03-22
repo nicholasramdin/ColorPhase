@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6667302510058687930}
   - component: {fileID: 652825253076116390}
-  - component: {fileID: 7177001274138470995}
   - component: {fileID: 6528070930371434890}
   - component: {fileID: 2613830264603068463}
   m_Layer: 0
@@ -59,33 +58,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7177001274138470995
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7596860724011229030}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!143 &6528070930371434890
 CharacterController:
   m_ObjectHideFlags: 0
@@ -126,6 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   MouseAnimation: {fileID: 2400711405353778801}
+  greenWallRespawnPosition: {fileID: 0}
+  greenWallPrefab: {fileID: 0}
+  blackWallPrefab: {fileID: 0}
+  yellowWallPrefab: {fileID: 0}
+  winScreen: {fileID: 0}
 --- !u!1001 &8087233358676329440
 PrefabInstance:
   m_ObjectHideFlags: 0
