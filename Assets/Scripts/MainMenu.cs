@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void Level1()
     {
-        Debug.Log("Play button clicked!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Play Level One!");
+        SceneManager.LoadScene(1);
     }
+
+    public void Level2()
+    {
+        Debug.Log("Play Level Two!");
+        SceneManager.LoadScene(2);
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit button clicked!");
