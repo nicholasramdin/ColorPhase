@@ -218,7 +218,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level2"); // Load Level 2 scene
+    }
 
 
     void ShowWinScreen()
