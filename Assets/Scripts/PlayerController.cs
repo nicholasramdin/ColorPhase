@@ -65,7 +65,14 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+
+        // Get the forward direction of the camera
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0; // Ensure the movement is only in the horizontal plane
+        cameraForward.Normalize();
+
+        // Calculate the movement direction based on the camera's forward direction
+        Vector3 moveDirection = (cameraForward * vertical + Camera.main.transform.right * horizontal).normalized;
 
         if (moveDirection != Vector3.zero)
         {
@@ -76,11 +83,14 @@ public class PlayerController : MonoBehaviour
         {
             MouseAnimation.SetFloat("Speed", 0f);
         }
+
+        // Apply movement relative to the camera's view
         Vector3 moveVector = moveDirection * speed * Time.deltaTime;
 
         moveVector.y -= 9.8f * Time.deltaTime;
         characterController.Move(moveVector);
     }
+
 
     public void RespawnGreenWall(GameObject greenWallPrefab, Vector3 position, Vector3 rotation, Vector3 scale)
     {
